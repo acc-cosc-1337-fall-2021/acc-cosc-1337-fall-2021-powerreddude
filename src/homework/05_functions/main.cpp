@@ -7,8 +7,19 @@ and display them to screen.
 Program continues until user decides to exit.
 
 */
+#include <func.h>
+#include <iostream>
+
 int main() 
 {
+	bool cont;
 
+	do
+	{
+		print_menu();
+
+		cont = run_menu_choice();
+	} while (cont == true);
+	
 	return 0;
 }
