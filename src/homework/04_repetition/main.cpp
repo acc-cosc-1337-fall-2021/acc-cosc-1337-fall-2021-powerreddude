@@ -1,7 +1,7 @@
 //write include statements
-
+#include "dna.h"
+#include <iostream>
 //write using statements
-
 
 /*
 Write code that prompts user to enter 1 for Get GC Content, 
@@ -12,5 +12,14 @@ user enters a y or Y.
 */
 int main() 
 {
+	bool cont = true;
+
+	do
+	{
+		print_menu();
+
+		cont = run_menu_choice();
+	} while (cont == true);
+	
 	return 0;
 }
