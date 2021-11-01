@@ -16,7 +16,6 @@ int main()
 			game.display_board();
 		} while (!game.game_over());
 
-		std::cout<<"The winner is "<<game.get_winner();
 		std::string answer;
 		std::cout<<"Would you like to contunue playing? (yes/no): ";
 		std::cin>>answer;
