@@ -4,10 +4,10 @@
 
 //cpp
 
-void Tic_tac_toe::display_board() const
-{
-    std::cout<<pegs[0]<<pegs[1]<<pegs[2]<<std::endl<<pegs[3]<<pegs[4]<<pegs[5]<<std::endl<<pegs[6]<<pegs[7]<<pegs[8]<<std::endl;
-}
+//void Tic_tac_toe::display_board() const
+//{
+//    std::cout<<pegs[0]<<pegs[1]<<pegs[2]<<std::endl<<pegs[3]<<pegs[4]<<pegs[5]<<std::endl<<pegs[6]<<pegs[7]<<pegs[8]<<std::endl;
+//}
 
 std::string Tic_tac_toe::get_player() const
 {
@@ -40,6 +40,7 @@ bool Tic_tac_toe::game_over()
         return true;
     } else if(check_board_full()) {
         winner = "C";
+        return true;
     } else {
         return false;
     }
@@ -154,4 +155,17 @@ bool Tic_tac_toe::check_column_win()
 std::string Tic_tac_toe::get_winner()
 {
     return winner;
+}
+
+std::ostream& operator<<(std::ostream& out, const Tic_tac_toe& game)
+{
+    std::cout<<game.pegs[0]<<game.pegs[1]<<game.pegs[2]<<std::endl<<game.pegs[3]<<game.pegs[4]<<game.pegs[5]<<std::endl<<game.pegs[6]<<game.pegs[7]<<game.pegs[8]<<std::endl;
+    return out;
+}
+
+
+std::istream& operator>>(std::istream& in, Tic_tac_toe& game)
+{
+    game.mark_board(get_int("Please enter the number of the square you would like to mark: "));
+    return in;
 }

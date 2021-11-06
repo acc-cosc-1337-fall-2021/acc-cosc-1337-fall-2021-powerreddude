@@ -1,6 +1,7 @@
 //h
 #include <vector>
 #include <string>
+#include <iostream>
 
 #ifndef TIC_TAC_TOE_H
 #define TIC_TAC_TOE_H
@@ -16,6 +17,10 @@ class Tic_tac_toe
         bool game_over();
 
         std::string get_winner();
+
+        friend std::ostream& operator<<(std::ostream& out, const Tic_tac_toe& game);
+        friend std::istream& operator>>(std::istream& in, Tic_tac_toe& game);
+        
 
     private:
         std::vector<std::string> pegs{ " ", " ", " ", " ", " ", " ", " ", " ", " " };
