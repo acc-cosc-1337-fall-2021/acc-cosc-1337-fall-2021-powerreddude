@@ -100,7 +100,7 @@ int get_int(std::string prompt)
 
     std::cin>>output;
 
-    if( !(output >= 0 && output <= 9) )
+    if( !(output >= 0 && output <= 16) )
     {
         return get_int("Please enter a number between 0 and 9 (>= 0, <=9): ");
     } else {
@@ -120,35 +120,16 @@ void Tic_tac_toe::set_winner()
 
 bool Tic_tac_toe::check_diagonal_win()
 {
-    if( ( (pegs[0] == pegs[4] && pegs[8] == pegs[4]) || (pegs[2] == pegs[4] && pegs[6] == pegs[4] ) ) && pegs[4] != " ")
-    {
-        return true;
-    } else {
-        return false;
-    }
+    return false;
 }
 
 bool Tic_tac_toe::check_row_win()
 {
-    for (auto i = 0; i < 7; i += 3)
-    {
-        if((pegs[i] == pegs[i + 1] && pegs[i + 1] == pegs[i + 2]) && pegs[i] != " ")
-        {
-            return true;
-        }
-    }
     return false;
 }
 
 bool Tic_tac_toe::check_column_win()
 {
-    for (auto i = 0; i < 3; i++)
-    {
-        if((pegs[i] == pegs[i + 3] && pegs[i + 6] == pegs[i + 3]) && pegs[i] != " ")
-        {
-            return true;
-        }
-    }
     return false;
 }
 
@@ -159,7 +140,11 @@ std::string Tic_tac_toe::get_winner()
 
 std::ostream& operator<<(std::ostream& out, const Tic_tac_toe& game)
 {
-    std::cout<<game.pegs[0]<<game.pegs[1]<<game.pegs[2]<<std::endl<<game.pegs[3]<<game.pegs[4]<<game.pegs[5]<<std::endl<<game.pegs[6]<<game.pegs[7]<<game.pegs[8]<<std::endl;
+    if(game.pegs.size() == 9) {
+        std::cout<<game.pegs[0]<<game.pegs[1]<<game.pegs[2]<<std::endl<<game.pegs[3]<<game.pegs[4]<<game.pegs[5]<<std::endl<<game.pegs[6]<<game.pegs[7]<<game.pegs[8]<<std::endl;
+    } else if(game.pegs.size() == 16) {
+        std::cout<<game.pegs[0]<<game.pegs[1]<<game.pegs[2]<<game.pegs[3]<<std::endl<<game.pegs[4]<<game.pegs[5]<<game.pegs[6]<<game.pegs[7]<<std::endl<<game.pegs[8]<<game.pegs[9]<<game.pegs[10]<<game.pegs[11]<<std::endl<<game.pegs[12]<<game.pegs[13]<<game.pegs[14]<<game.pegs[15]<<std::endl;
+    }
     return out;
 }
 

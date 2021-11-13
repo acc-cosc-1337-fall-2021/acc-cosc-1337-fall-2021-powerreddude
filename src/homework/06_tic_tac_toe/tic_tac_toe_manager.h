@@ -1,4 +1,5 @@
 //h
+#include <memory>
 #include <vector>
 #include <string>
 #include <iostream>
@@ -9,12 +10,12 @@
 class Tic_tac_toe_manager
 {
     public:
-        void save_game(Tic_tac_toe b);
+        void save_game(std::unique_ptr<Tic_tac_toe>& b);
         friend std::ostream& operator<<(std::ostream & out, const Tic_tac_toe_manager & manager);
         void get_winner_total(int& o, int& x, int& t);
 
     private:
-        std::vector<Tic_tac_toe> games;
+        std::vector<std::unique_ptr<Tic_tac_toe>> games;
         int x_win = 0;
         int o_win = 0;
         int ties = 0;

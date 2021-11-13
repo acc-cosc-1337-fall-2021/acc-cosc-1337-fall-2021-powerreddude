@@ -10,6 +10,7 @@
 class Tic_tac_toe
 {
     public:
+        Tic_tac_toe(int size):pegs(size*size, " ") {};
         void display_board() const;
         std::string get_player() const;
         void mark_board(int position);
@@ -23,7 +24,6 @@ class Tic_tac_toe
         
 
     private:
-        std::vector<std::string> pegs{ " ", " ", " ", " ", " ", " ", " ", " ", " " };
         std::string player;
         std::string winner;
 
@@ -32,9 +32,13 @@ class Tic_tac_toe
         void clear_board();
 
         void set_winner();
-        bool check_diagonal_win();
-        bool check_row_win();
-        bool check_column_win();
+    
+    
+    protected:
+        std::vector<std::string> pegs;
+        virtual bool check_diagonal_win();
+        virtual bool check_row_win();
+        virtual bool check_column_win();
 };
 
 
