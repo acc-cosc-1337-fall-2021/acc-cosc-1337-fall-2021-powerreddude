@@ -13,7 +13,7 @@ class Tic_tac_toe
         Tic_tac_toe(int size):pegs(size*size, " ") {};
         void display_board() const;
         std::string get_player() const;
-        bool mark_board(int position);
+        void mark_board(int position);
         void start_game(std::string first_player);
         bool game_over();
 
