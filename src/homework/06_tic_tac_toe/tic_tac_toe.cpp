@@ -14,13 +14,15 @@ std::string Tic_tac_toe::get_player() const
     return player;
 }
 
-void Tic_tac_toe::mark_board(int position)
+bool Tic_tac_toe::mark_board(int position)
 {
-    if(position >= 1 && position <= pegs.size())
+    if(position >= 1 && position <= pegs.size() && pegs[position - 1] == " ")
     {
         pegs[position - 1] = player;
         set_next_player();
+        return true;
     }
+    return false;
 }
 
 void Tic_tac_toe::start_game(std::string first_player)
@@ -151,6 +153,9 @@ std::ostream& operator<<(std::ostream& out, const Tic_tac_toe& game)
 
 std::istream& operator>>(std::istream& in, Tic_tac_toe& game)
 {
-    game.mark_board(get_int("Please enter the number of the square you would like to mark: "));
-    return in;
+    if(game.mark_board(get_int("Please enter the number of the square you would like to mark: "))) {
+        return in;
+    } else {
+        return std::cin>>game;
+    }
 }
