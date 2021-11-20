@@ -11,17 +11,19 @@ class Tic_tac_toe
 {
     public:
         Tic_tac_toe(int size):pegs(size*size, " ") {};
+        Tic_tac_toe(std::vector<std::string> p, std::string win):pegs(p), winner(win) {};
         void display_board() const;
         std::string get_player() const;
         void mark_board(int position);
         void start_game(std::string first_player);
         bool game_over();
 
-        std::string get_winner();
+        std::string get_winner() const;// this is ok i think
 
         friend std::ostream& operator<<(std::ostream& out, const Tic_tac_toe& game);
         friend std::istream& operator>>(std::istream& in, Tic_tac_toe& game);
         
+        std::vector<std::string> get_pegs() const;
 
     private:
         std::string player;

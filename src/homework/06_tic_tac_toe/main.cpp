@@ -3,13 +3,15 @@
 #include "tic_tac_toe_3.h"
 #include "tic_tac_toe_4.h"
 #include "tic_tac_toe_manager.h"
+#include "tic_tac_toe_data.h"
 //test
 
 
 int main() 
 {
+	Tic_tac_toe_data data;
 	std::unique_ptr<Tic_tac_toe> game;
-	Tic_tac_toe_manager manager;
+	Tic_tac_toe_manager manager(data);
 
 
 	while(true)

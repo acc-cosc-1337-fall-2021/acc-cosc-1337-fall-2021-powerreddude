@@ -133,7 +133,7 @@ bool Tic_tac_toe::check_column_win()
     return false;
 }
 
-std::string Tic_tac_toe::get_winner()
+std::string Tic_tac_toe::get_winner() const
 {
     return winner;
 }
@@ -159,4 +159,9 @@ std::istream& operator>>(std::istream& in, Tic_tac_toe& game)
     } else {
         return std::cin>>game;
     }
+}
+
+std::vector<std::string> Tic_tac_toe::get_pegs() const
+{
+    return pegs;
 }

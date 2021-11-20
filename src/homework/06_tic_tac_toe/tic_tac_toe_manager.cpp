@@ -39,3 +39,17 @@ void Tic_tac_toe_manager::get_winner_total(int& o, int& x, int& t)
     x = x_win;
     t = ties;
 }
+
+Tic_tac_toe_manager::Tic_tac_toe_manager(Tic_tac_toe_data d): data(d)
+{
+    games = data.get_games();
+
+    for(auto& game : games) {
+        update_winner_count(game -> get_winner());
+    }
+}
+
+Tic_tac_toe_manager::~Tic_tac_toe_manager()
+{
+    data.save_games(games);
+}
